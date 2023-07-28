@@ -129,7 +129,7 @@ const ListUser = () => {
     <>
       <Form className={styles.form} form={form} onValuesChange={debounce(onValuesChange, 300)} name='form-search-user'>
         <Row className={styles.listUser}>
-          <HeaderSearch title='Danh sách người dùng' form={form} />
+          <HeaderSearch title='Danh sách loại sản phẩm' form={form} />
           <TableCustomize
             columns={columns}
             data={data}

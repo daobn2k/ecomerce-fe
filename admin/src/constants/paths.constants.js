@@ -10,11 +10,8 @@ export const paths = {
   posts: '/posts',
   transactionHistory: '/transaction-history',
   recharge: '/recharge',
-  xVideos: '/xvideos',
-  xStory: '/xstorys',
-  xAlbums: '/xalbums',
-  xReviews: '/xreviews',
   settingInfo: '/setting/info',
   notification: '/notification',
   massage: '/massage',
+  categories: '/categories',
 };
