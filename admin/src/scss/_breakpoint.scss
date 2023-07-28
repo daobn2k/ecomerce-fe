@@ -1,0 +1,37 @@
+@use './variables' as *;
+
+@mixin xs {
+    @media screen and (max-width: $mobile-width) {
+        @content;
+    }
+}
+
+@mixin mobile {
+    @media only screen and (min-width: $mobile-width) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media only screen and (min-width: $tablet-width) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media only screen and (min-width: $desktop-width) {
+        @content;
+    }
+}
+
+@mixin pc {
+    @media only screen and (min-width: $pc-width) {
+        @content;
+    }
+}
+
+@mixin large-pc {
+    @media only screen and (min-width: $large-pc-width) {
+        @content;
+    }
+}

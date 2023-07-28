@@ -1,0 +1,29 @@
+@use '../../scss/' as *;
+.drag {
+  width: 100%;
+  :global {
+    .ant-upload-drag-icon {
+      svg {
+        font-size: 48px;
+      }
+    }
+  }
+  .divText {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    font-size: 14px;
+  }
+  .button {
+    height: 38px;
+    width: 124px;
+    background: $rating-color;
+    color: $white;
+    font-size: 16px;
+    &:hover {
+      color: $white;
+    }
+  }
+}

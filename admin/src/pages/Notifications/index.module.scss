@@ -1,0 +1,28 @@
+@use '../../scss/' as *;
+
+.root {
+  width: 100%;
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  .list {
+    .itemNotification {
+      display: flex;
+      flex-direction: column;
+      padding: 16px;
+      background-color: $bg-header;
+      border-radius: 8px;
+      gap: 8px;
+      .name {
+        font-size: 16px;
+        color: $white;
+      }
+    }
+  }
+  .rowPage {
+    margin-top: 12px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+  }
+}

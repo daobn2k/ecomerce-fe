@@ -1,0 +1,11 @@
+@use '../../../scss/' as *;
+
+.headerSearch {
+  display: flex;
+  flex-direction: column;
+  .title {
+    font-size: 20px;
+    line-height: 28px;
+    font-weight: bold;
+  }
+}

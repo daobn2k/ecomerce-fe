@@ -1,0 +1,39 @@
+@use '../../scss/' as *;
+
+.itemFileImage {
+  height: 100%;
+  width: 100%;
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  .infoImage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.icon {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  top: -8px;
+  right: -8px;
+  border-radius: 50%;
+  background-color: $rating-color;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  .removeIcon {
+    font-size: 16px;
+    color: $white;
+  }
+}

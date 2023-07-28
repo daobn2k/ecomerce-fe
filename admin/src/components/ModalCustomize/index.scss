@@ -1,0 +1,19 @@
+@use '../../scss/' as *;
+
+.modal-custom {
+  .modal-btn_cancel,
+  .modal-btn_oke {
+    min-width: 96px;
+  }
+
+  .modal-btn_oke {
+    background-color: $bg-button;
+    color: $white;
+  }
+}
+.modal-delete {
+  .modal-btn_oke {
+    background-color: $rating-color;
+    color: $white;
+  }
+}

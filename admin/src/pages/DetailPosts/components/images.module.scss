@@ -1,0 +1,121 @@
+@use '../../../scss/' as *;
+
+.editGirl {
+  width: 100%;
+  .form {
+    width: 100%;
+    margin: 8px 0;
+    @include mobile {
+      margin-top: 24px;
+    }
+    .files {
+      :global {
+        .ant-upload-list {
+          display: grid;
+          grid-gap: 20px;
+          margin: 24px auto;
+          grid-template-columns: 1fr 1fr 1fr 1fr;
+          grid-auto-flow: dense;
+          .ant-image-img {
+            height: 100%;
+          }
+          .ant-upload-list-item-container {
+            height: 300px;
+          }
+          &::before,
+          &::after {
+            display: none;
+          }
+          @media screen and (max-width: $desktop-width) {
+            grid-template-columns: 1fr 1fr 1fr;
+          }
+          @media screen and (max-width: $tablet-width) {
+            grid-template-columns: 1fr 1fr;
+          }
+        }
+      }
+    }
+    .itemForm {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      gap: 16px;
+
+      .rowSearch {
+        width: 48%;
+
+        @media screen and (max-width: $desktop-width) {
+          width: 100%;
+        }
+      }
+    }
+
+    .itemFormBody {
+      .rowSearch {
+        width: 30%;
+      }
+    }
+
+    .btnUpload {
+      height: unset;
+      display: flex;
+      flex-wrap: wrap;
+    }
+    .code {
+      color: $rating-color;
+      margin-left: 4px;
+    }
+
+    .button {
+      height: 40px;
+      width: 124px;
+      background: $rating-color;
+      color: $white;
+      font-size: 16px;
+      &:hover {
+        color: $white;
+      }
+      margin-right: 16px;
+    }
+    :global {
+      .ant-form-item {
+        margin-bottom: 12px;
+      }
+      .ant-picker {
+        width: 100%;
+        max-width: unset;
+      }
+    }
+
+    @media screen and (max-width: $tablet-width) {
+      :global {
+        .ant-form-item {
+          max-width: 100%;
+        }
+      }
+    }
+  }
+}
+
+.video {
+  height: 350px;
+  position: relative;
+}
+
+.icon {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  top: -8px;
+  right: -8px;
+  border-radius: 50%;
+  background-color: $rating-color;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  .removeIcon {
+    font-size: 16px;
+    color: $white;
+  }
+}

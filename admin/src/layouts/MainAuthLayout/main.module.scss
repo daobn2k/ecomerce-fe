@@ -1,0 +1,13 @@
+@use '../../scss/' as *;
+.main {
+  background: $body-bg;
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh);
+  overflow: hidden;
+  .content {
+    padding: 24px;
+    min-height: calc(100vh - 64px);
+    overflow: auto;
+  }
+}

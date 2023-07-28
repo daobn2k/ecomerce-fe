@@ -1,0 +1,30 @@
+@use '../../scss/' as *;
+
+.listTags {
+  margin-top: 8px;
+  .listTags {
+    display: flex;
+  }
+
+  .tags {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    .titleTag {
+      font-size: 14px;
+      color: $white;
+    }
+    .tagItem {
+      padding: 4px;
+      border-radius: 4px;
+      background: #2b2b2b;
+      cursor: pointer;
+      .txt {
+        color: $white;
+        font-size: 12px;
+
+        font-weight: 600;
+      }
+    }
+  }
+}

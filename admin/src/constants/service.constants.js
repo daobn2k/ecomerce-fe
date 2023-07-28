@@ -1,0 +1,14 @@
+export const service = Object.freeze({
+    DOMAIN: process.env.REACT_APP_API_URL,
+    TIME_OUT: 30 * 1000, // 30 seconds
+    WIDTH_CONSTANT_PORTRAIT: 375,
+    MAX_LENGTH_PHONE_NUMBER: 10,
+    MAX_LENGTH_FULL_NAME: 70,
+    MAX_LENGTH_ADDRESS: 150,
+    MAX_LENGTH_EMAIL: 35,
+    MAX_LENGTH_100: 100,
+    MAX_LENGTH_15: 15,
+    MAX_LENGTH_LOAN_AMOUNT: 11,
+
+    DEFAULT_LANGUAGE: 'vi',
+});

@@ -1,0 +1,131 @@
+@use '../../scss/' as *;
+
+.inputText {
+  padding: 4px 16px;
+  background-color: $bg-input;
+  border: 1px solid $bg-border-input;
+  color: $txt-color;
+  min-height: 36px;
+
+  box-shadow: inset 0px 2px 2px -1px rgba(74, 74, 104, 0.1);
+  border-radius: 8px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+
+  input {
+    background: $gray-6;
+  }
+
+  &::-webkit-input-placeholder {
+    /* Edge */
+    color: $gray-3;
+  }
+
+  &:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: $gray-3;
+  }
+
+  &::placeholder {
+    color: $gray-3;
+  }
+  &:focus,
+  &:active,
+  &:visited,
+  &:focus-visible,
+  &:focus-within,
+  &:target {
+    input {
+    }
+    box-shadow: none;
+  }
+}
+
+.hasIcon {
+  padding: 12px 16px;
+  background: $gray-6;
+  box-shadow: inset 0px 2px 2px -1px rgba(74, 74, 104, 0.1);
+  border-radius: 10px;
+  border: 1px solid $gray-6;
+
+  &:placeholder-shown {
+    border: 1px solid $gray-6;
+  }
+  &:focus,
+  &:active,
+  &:visited,
+  &:focus-visible {
+    box-shadow: none;
+    border: 1px solid #4096ff;
+    background: $white;
+  }
+  input {
+    color: $txt-color;
+    background: $gray-6;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+
+    &::-webkit-input-placeholder {
+      /* Edge */
+      color: $gray-3;
+    }
+
+    &:-ms-input-placeholder {
+      /* Internet Explorer 10-11 */
+      color: $gray-3;
+    }
+
+    &::placeholder {
+      color: $gray-3;
+    }
+  }
+
+  :global {
+    .ant-input-prefix {
+      margin-right: 15px;
+    }
+    .ant-input-suffix {
+      margin-left: 15px;
+    }
+  }
+  &:global(.ant-input-affix-wrapper-focused) {
+    background: $white !important;
+    input {
+      background: $white !important;
+    }
+  }
+
+  &:global(.ant-input-affix-wrapper-disabled) {
+    color: $gray-3 !important;
+    border: 1px solid transparent !important;
+  }
+}
+
+.error {
+  margin: 4px 0 0;
+}
+
+.errorText {
+  color: $gray-1;
+  font-weight: 400;
+  font-size: 12px;
+}
+.logoError {
+  display: flex;
+  align-items: center;
+}
+
+:global {
+  :where(.css-dev-only-do-not-override-ed5zg0).ant-input-affix-wrapper > input.ant-input {
+    background-color: $bg-input;
+    color: $txt-color;
+    &::placeholder {
+      color: $gray-3;
+    }
+  }
+  :where(.css-dev-only-do-not-override-ed5zg0).ant-input-affix-wrapper .anticon.ant-input-password-icon {
+    color: $txt-color;
+  }
+}

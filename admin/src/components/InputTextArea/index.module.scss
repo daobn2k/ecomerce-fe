@@ -1,0 +1,60 @@
+@use '../../scss/' as *;
+
+.inputTextarea {
+  padding: 12px 16px;
+  background: $bg-input;
+  box-shadow: inset 0px 2px 2px -1px rgba(74, 74, 104, 0.1);
+  border-radius: 10px;
+
+  &:focus,
+  &:active,
+  &:visited,
+  &:hover,
+  &:focus-visible {
+    box-shadow: none;
+    background: $bg-input !important;
+    border: 1px solid $bg-input-focus;
+  }
+
+  input {
+    background: $bg-input;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+
+    &::-webkit-input-placeholder {
+      /* Edge */
+      color: $gray-3;
+    }
+
+    &:-ms-input-placeholder {
+      /* Internet Explorer 10-11 */
+      color: $gray-3;
+    }
+
+    &::placeholder {
+      color: $gray-3;
+    }
+  }
+
+  :global {
+    .ant-input-prefix {
+      margin-right: 15px;
+    }
+    .ant-input-suffix {
+      margin-left: 15px;
+    }
+  }
+
+  &:global(.ant-input-affix-wrapper-focused) {
+    background: $bg-input !important;
+    input {
+      background: $bg-input !important;
+    }
+  }
+
+  &:global(.ant-input-affix-wrapper-disabled) {
+    color: $txt-color !important;
+    background: $bg-input !important;
+  }
+}

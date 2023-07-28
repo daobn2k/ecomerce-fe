@@ -1,0 +1,36 @@
+@use '../../scss/' as *;
+
+.pagination {
+    :global {
+        .ant-pagination-item,
+        .ant-pagination-next,
+        .ant-pagination-prev {
+            cursor: pointer;
+            background-color: $bg-pagination;
+            &:hover {
+                background-color: $bg-pagination;
+            }
+            svg {
+                color: white;
+            }
+        }
+        .ant-pagination-item-active {
+            background-color: red;
+            border: unset;
+            &:hover {
+                background-color: $bg-pagination;
+            }
+        }
+        .ant-pagination-options {
+            display: none;
+        }
+        .ant-pagination-item-ellipsis {
+            color: white !important;
+        }
+    }
+    a {
+        width: 38px;
+        height: 38px;
+        color: white !important;
+    }
+}

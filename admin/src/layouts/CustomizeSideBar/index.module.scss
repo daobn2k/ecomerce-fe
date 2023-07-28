@@ -1,0 +1,52 @@
+@use '../../scss/' as *;
+.sideBar {
+  background: $bg-side-bar !important;
+  width: 250px !important;
+  max-width: 250px !important;
+  min-width: 250px !important;
+  z-index: 10000;
+  .menuSideBar {
+    background-color: $bg-side-bar;
+  }
+  :global {
+    .ant-menu-item-selected {
+      background-color: $bg-menu-side-focus !important;
+    }
+    .ant-menu-title-content,
+    .ant-menu-submenu-arrow {
+      font-size: 14px;
+      color: $txt-side-bar;
+    }
+
+    :where(.css-dev-only-do-not-override-1138mfc).ant-menu-light.ant-menu-root.ant-menu-inline {
+      border-inline-end: none;
+    }
+
+    svg,
+    i {
+      font-size: 16px;
+      color: $txt-side-bar;
+    }
+  }
+}
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-inline: 16px;
+  height: 40px;
+  margin: 12px 0;
+  .logoText {
+    color: $white;
+    margin-left: 6px;
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: bold;
+  }
+  cursor: pointer;
+  &:hover {
+    .logoText {
+      color: $txt-side-bar;
+    }
+  }
+}

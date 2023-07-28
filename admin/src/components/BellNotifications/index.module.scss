@@ -1,0 +1,33 @@
+@use '../../scss/' as *;
+
+.root {
+  cursor: pointer;
+}
+
+.list {
+  max-width: 325px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  .item {
+    padding: 6px;
+    border-radius: 8px;
+    cursor: pointer;
+    .text {
+      font-size: 14px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+  }
+  .viewAll {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+    cursor: pointer;
+  }
+}

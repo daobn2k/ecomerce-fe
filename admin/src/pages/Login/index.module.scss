@@ -1,0 +1,74 @@
+@use '../../scss/' as *;
+.login {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  padding: 0 24px;
+  background: $bg-gray;
+  gap: 48px;
+  background-image: url('https://colorlib.com/etc/lf/Login_v3/images/bg-01.jpg');
+
+  @media screen and (max-width: $tablet-width) {
+    gap: 0px;
+    flex-direction: column;
+  }
+  .paperForm {
+    padding: 24px;
+    background-color: $white;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+    max-width: 540px;
+    .topLogin {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      width: 100%;
+      .title {
+        font-size: 20px;
+      }
+    }
+    .form {
+      flex: 1;
+      margin: 8px 0;
+      width: 100%;
+      @include mobile {
+        margin-top: 24px;
+      }
+
+      .rowSearch {
+        min-width: 200px;
+      }
+      .button {
+        height: 48px;
+        width: 100%;
+        background: $rating-color;
+        color: $white;
+        background-color: $bg-button;
+        font-size: 16px;
+        &:hover {
+          color: $white;
+        }
+        margin-right: 16px;
+      }
+      :global {
+        .ant-form-item {
+          margin-bottom: 12px;
+        }
+      }
+    }
+  }
+
+  .rowService {
+    margin: 8px 0;
+    @include mobile {
+      margin-top: 24px;
+    }
+  }
+}
