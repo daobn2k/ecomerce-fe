@@ -134,9 +134,8 @@ export const postStatus = {
 };
 
 export const optionsRole = [
-  { id: 1, value: 'Quản trị viên', label: 'Quản trị viên' },
-  { id: 2, value: 'Người dùng', label: 'Người dùng' },
-  { id: 3, value: 'Nhà cung cấp', label: 'Nhà cung cấp' },
+  { id: 'ADMIN', value: 'Quản trị viên', label: 'Quản trị viên' },
+  { id: 'USER', value: 'Người dùng', label: 'Người dùng' },
 ];
 
 export const statusPosts = [
@@ -153,5 +152,5 @@ export const settingsType = {
   massage_rate: 'massage_rate',
   tele_link: 'tele_link',
   privacy: 'privacy',
-  contentFooter:'contentFooter'
+  contentFooter: 'contentFooter',
 };

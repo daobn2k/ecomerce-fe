@@ -2,10 +2,10 @@ import Api from 'services/ApiManager';
 import { methods } from 'services/method.services';
 
 const urls = {
-  login: '/user/login',
-  logout: '/user/logout',
-  register: '/user/register',
-  refreshToken:'/user/new-token',
+  login: '/users/login',
+  logout: '/users/logout',
+  register: '/users/register',
+  refreshToken: '/users/new-token',
 };
 
 class authApi {
@@ -21,13 +21,10 @@ class authApi {
     const url = urls.logout;
     return Api.request({ method: methods.post, url, params });
   }
-  refreshToken(params){
+  refreshToken(params) {
     const url = urls.refreshToken;
     return Api.request({ method: methods.post, url, params });
-
   }
 }
 
-
-
-export default authApi
+export default authApi;

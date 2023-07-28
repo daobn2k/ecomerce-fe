@@ -107,6 +107,8 @@ class ApiClient {
       request = Axios.put(urlRequest, params);
     } else if (method === methods.delete) {
       request = Axios.delete(urlRequest, params);
+    } else if (method === methods.patch) {
+      request = Axios.patch(urlRequest, params);
     } else {
       request = Axios.get(urlRequest, { params });
     }
@@ -142,7 +144,7 @@ class ApiClient {
           const { refreshToken } = getUserProfile();
 
           if (refreshToken) {
-            handleRefreshToken(refreshToken);
+            // handleRefreshToken(refreshToken);
           }
           return (response.message = 'Token hết hạn vui lòng chờ trong giây lát');
         }

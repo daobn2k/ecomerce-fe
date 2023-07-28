@@ -9,14 +9,11 @@ import styles from './main.module.scss';
 const { Content } = Layout;
 
 const MainAuthLayout = () => {
-  const token = getToken();
   const userStorage = getUserProfile();
-  if (!token || userStorage.role === 2 || userStorage.role === 3) {
-    clearStorage();
+  if (userStorage.role !== 'ADMIN') {
     notification.error({ message: 'Người dùng không có quyền đăng nhập vào admin' });
     return <Navigate to={paths.login} />;
   }
-
   return (
     <Layout
       style={{

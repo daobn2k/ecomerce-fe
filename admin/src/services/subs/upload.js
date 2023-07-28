@@ -2,7 +2,7 @@ import Api from 'services/ApiManager';
 import { methods } from 'services/method.services';
 
 const urls = {
-  upload: '/upload',
+  upload: '/uploadfile',
 };
 
 class uploadApi {

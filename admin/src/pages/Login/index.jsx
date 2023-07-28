@@ -23,12 +23,9 @@ export const Login = () => {
     showLoading();
     const res = await new authApi().login({ ...values });
 
-    if (res?.status && res?.data?.success) {
-      const { accessToken, user, refreshToken } = res?.data?.data;
-      console.log(user, 'user');
-      setToken(accessToken);
-      setUser(user);
-      setUserProfile({ ...user, refreshToken });
+    if (res?.data?.result === 'SUCCESS') {
+      setUser(res?.data?.data);
+      setUserProfile(res?.data?.data);
       notification.success({ message: 'Đăng nhập thành công' });
       form.resetFields();
       navigate(paths.posts);
@@ -54,7 +51,7 @@ export const Login = () => {
             name='password'
             rules={[
               { required: true, message: 'Vui lòng nhập tên mật khẩu' },
-              { min: 8, message: 'Vui lòng nhập mật khẩu trên 8 ký tự' },
+              { min: 6, message: 'Vui lòng nhập mật khẩu trên 6 ký tự' },
             ]}
           >
             <PasswordInput label='Mật khẩu' require={true} placeholder='Nhập mật khẩu' />

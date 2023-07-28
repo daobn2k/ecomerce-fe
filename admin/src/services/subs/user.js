@@ -2,12 +2,12 @@ import Api from 'services/ApiManager';
 import { methods } from 'services/method.services';
 
 const urls = {
-  getUser: '/user/paging',
-  userDetail: '/user/profile',
-  userAccount: '/user/account',
-  userAll: '/user/all',
-  remove: '/user',
-  changePoint: '/user/update-points',
+  getUser: '/users',
+  userDetail: '/users/profile',
+  userAccount: '/users',
+  userAll: '/users/all',
+  remove: '/users',
+  changePoint: '/users/update-points',
 };
 
 class userApi {
@@ -25,7 +25,7 @@ class userApi {
   }
   editUser({ id, params }) {
     const url = `${urls.userAccount}/${id}`;
-    return Api.request({ method: methods.put, url, params });
+    return Api.request({ method: methods.patch, url, params });
   }
   deleteUser(params) {
     const url = urls.getUser;

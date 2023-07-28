@@ -28,7 +28,7 @@ const CustomizeSideBar = () => {
     <Sider className={clsx(styles.sideBar)}>
       <Row className={styles.logo}>
         <Typography className={styles.logoText} onClick={onClickLogo}>
-          KỸ VIỆN ADMIN
+          Yang Boutique
         </Typography>
       </Row>
       <Menu mode='inline' items={menu} className={styles.menuSideBar} onClick={onClick} selectedKeys={[current]} />

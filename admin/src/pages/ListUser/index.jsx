@@ -34,15 +34,13 @@ const ListUser = () => {
     const res = await new userApi().getUser({
       page: pagination?.page,
       limit: pagination?.pageSize,
-      orderType: 'desc',
-      orderBy: 'username',
       ...valuesForm,
       ...data,
     });
-    if (res?.status && res?.data?.success) {
-      const { items = [], totalItems = 0, page, limit } = res?.data?.data;
+    if (res?.status && res?.data?.result === 'SUCCESS') {
+      const { data = [], totalItems = 0, page, limit } = res?.data;
       // data gì đó và set up
-      setData(items);
+      setData(data);
       setPagination({ pageSize: limit, page, total: totalItems });
     }
     setLoading(false);
@@ -100,39 +98,20 @@ const ListUser = () => {
       width: 150,
     },
     {
-      title: 'Điểm',
-      dataIndex: 'point',
-      width: 100,
-    },
-    // {
-    //   title: 'Năm Sinh',
-    //   dataIndex: 'yearOfBirth',
-    //   width: 85,
-    //   render: (values) => {
-    //     return <>{values ? moment(values, 'YYYY').format('YYYY') : ''}</>;
-    //   },
-    // },
-    {
       title: 'Giới tính',
       dataIndex: 'gender',
       width: 85,
     },
-    // {
-    //   title: 'Số điện thoại',
-    //   dataIndex: 'phone',
-    //   width: 100,
-    // },
     {
-      title: 'Trạng thái',
-      dataIndex: 'isOnline',
+      title: 'Số điện thoại',
+      dataIndex: 'phone',
       width: 100,
-      render: (value) => (value ? <Tag color='#87d068'>Đang hoạt động</Tag> : <Tag color='#f50'>Không hoạt động</Tag>),
     },
     {
-      title: 'Yêu cầu',
-      dataIndex: 'requestRole',
+      title: 'Trạng thái',
+      dataIndex: 'status',
       width: 100,
-      render: (value) => (value === 3 ? 'Trở thành nhà cung cấp' : value === 1 ? 'Trở thành admin' : ''),
+      render: (value) => (value ? <Tag color='#87d068'>Đang hoạt động</Tag> : <Tag color='#f50'>Không hoạt động</Tag>),
     },
     {
       title: 'Hành động',
@@ -142,9 +121,6 @@ const ListUser = () => {
       render: (_, item) => (
         <Row className={styles.action}>
           <ActionTable onRemove={() => onRemove(item?._id)} onEdit={() => navigate(`${paths.user}/${item._id}`)} />
-          <Button onClick={() => onActionChangePoint(item)} htmlType='button' type='primary'>
-            Sửa điểm
-          </Button>
         </Row>
       ),
     },

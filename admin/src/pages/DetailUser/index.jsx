@@ -20,30 +20,30 @@ const DetailUser = forwardRef(() => {
   const onFinish = async (values) => {
     showLoading();
 
-    const role = optionsRole.find((i) => i.value === values?.role || i.id === Number(values?.role));
+    const role = optionsRole.find((i) => i.value === values?.role || i.id === values?.role);
     delete values.point;
     const res = await new userApi().editUser({
       id,
       params: {
         ...values,
-        yearOfBirth: +values['yearOfBirth'].format('YYYY'),
+        dob: values['dob'].format('YYYY'),
         role: role?.id ?? undefined,
         phone: values?.phone ?? undefined,
       },
     });
-    if (res?.data?.success) {
-      notification.success({ message: 'Chỉnh sửa người dùng thành công' });
+    if (res?.data?.result === 'SUCCESS') {
+      notification.success({ message: res?.data?.message ?? 'Chỉnh sửa người dùng thành công' });
     }
     hideLoading();
   };
   const getDetailUser = async (id) => {
     const res = await new userApi().getUserDetail(id);
 
-    if (res?.data?.success) {
+    if (res?.data?.result === 'SUCCESS') {
       const user = res?.data?.data;
       form.setFieldsValue({
         ...user,
-        yearOfBirth: user?.yearOfBirth ? moment(user?.yearOfBirth, 'YYYY') : null,
+        dob: user?.dob ? moment(user?.dob, 'YYYY') : null,
         role: optionsRole.find((ele) => ele.id === user?.role)?.value,
       });
     }
@@ -94,64 +94,18 @@ const DetailUser = forwardRef(() => {
           </Form.Item>
           <Form.Item
             className={styles.rowSearch}
-            name='yearOfBirth'
+            name='dob'
             rules={[{ required: true, message: 'Vui lòng chọn ngày sinh' }]}
           >
             <DatePickerCustomize label='Năm sinh' require picker='year' placeholder='Chọn ngày sinh' />
           </Form.Item>
-          {/* <Form.Item className={styles.rowSearch} name='username_telegram'>
-            <InputText label='Tên telegram ' placeholder='Nhập tên telegram' />
-          </Form.Item> */}
           <Form.Item className={styles.rowSearch} name='phone'>
             <InputText label='Số điện thoại' placeholder='Nhập số điện thoại' type='tel' />
-          </Form.Item>
-          <Form.Item className={styles.rowSearch} name='point'>
-            <InputText label='Điểm' placeholder='Nhập điểm' disabled={true} />
           </Form.Item>
           <Form.Item className={styles.rowSearch} name='role'>
             <SelectSearchInput label='Phân quyền tài khoản' options={optionsRole} />
           </Form.Item>
-          {/* <Form.Item className={styles.rowSearch} name='level'>
-            <InputText label='level' placeholder='' disabled={true} />
-          </Form.Item> */}
-          {/* <Form.Item
-            className={styles.rowSearch}
-            name='locationProvince'
-            rules={[{ required: true, message: 'Chọn thành phố' }]}
-          >
-            <SelectSearchInput
-              label='Tỉnh / Thành phố'
-              options={provinces}
-              placeholder='Vui lòng chọn tỉnh / thành phố '
-              require
-              onChange={onChangeProvince}
-            />
-          </Form.Item>
-          <Form.Item className={styles.rowSearch} dependencies={['locationProvince']} noStyle>
-            {(props) => {
-              const province = props.getFieldValue('locationProvince');
-              if (!province) return;
-              return (
-                <Form.Item
-                  className={styles.rowSearch}
-                  name='locationDistrict'
-                  rules={[{ required: true, message: 'Chọn quận huyện' }]}
-                >
-                  <SelectDistrict
-                    label='Quận / huyện'
-                    province={province}
-                    placeholder='Vui lòng chọn quận / huyện'
-                    require
-                    disabled={!province}
-                  />
-                </Form.Item>
-              );
-            }}
-          </Form.Item> */}
         </Row>
-        {/* <Form.Item className={clsx(styles.rowSearch, styles.rowDescription)} name='description'>
-          <InputTextarea label='Thông tin bổ sung' />
-        </Form.Item> */}
         <Form.Item className={styles.rowSearch} name='password'>
           <Button className={styles.button} htmlType='submit'>
             Lưu

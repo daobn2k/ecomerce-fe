@@ -5,17 +5,13 @@ import NotFoundPage from 'pages/NotFoundPage';
 import UnAuthorizedPage from 'pages/UnAuthorizedPage';
 import { createBrowserRouter } from 'react-router-dom';
 import menu from './menu';
-import { posts } from './posts';
-import { recharge } from './recharge';
-import { transaction } from './transaction';
 import { user } from './user.routes';
-import { video } from './video';
 
 const router = createBrowserRouter([
   {
     path: paths.home,
     element: <MainAuthLayout />,
-    children: [...menu, ...user, ...posts, ...transaction, ...recharge, ...video],
+    children: [...menu, ...user],
   },
   {
     path: paths.unauthorized,
