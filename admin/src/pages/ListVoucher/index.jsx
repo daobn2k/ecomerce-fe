@@ -1,5 +1,5 @@
 import { PlusCircleOutlined } from '@ant-design/icons';
-import { Button, Form, notification, Row } from 'antd';
+import { Button, Form, notification, Row, Typography } from 'antd';
 import { ActionTable } from 'components/ActionTable';
 import { hideLoading, showLoading } from 'components/Loading';
 import TableCustomize from 'components/TableCustomize';
@@ -7,17 +7,14 @@ import { paths } from 'constants/paths.constants';
 import { debounce } from 'lodash';
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import categoriesApi from 'services/subs/categories';
+import voucherApi from 'services/subs/voucher';
 import { convertDateStringToLocal } from 'utils/function.utils';
 import HeaderSearch from './components/HeaderSearch';
 import styles from './index.module.scss';
-const ListCategory = () => {
+
+const ListVoucher = () => {
   const navigate = useNavigate();
   const [form] = Form.useForm();
-  const modalRef = useRef();
-  const formPointRef = useRef();
-
-  const [dataEdit, setDataEdit] = useState(null);
   const [data, setData] = useState([]);
   const [pagination, setPagination] = useState({
     page: 1,
@@ -26,10 +23,12 @@ const ListCategory = () => {
   });
   const [loading, setLoading] = useState(false);
 
-  const handlerGetUser = async (data) => {
+  const modalRef = useRef();
+
+  const handlerGetVoucher = async (data) => {
     setLoading(true);
     const valuesForm = form.getFieldValue();
-    const res = await new categoriesApi().get({
+    const res = await new voucherApi().get({
       page: pagination?.page,
       limit: pagination?.pageSize,
       ...valuesForm,
@@ -44,33 +43,60 @@ const ListCategory = () => {
     setLoading(false);
   };
   const onChangePage = (page, pageSize) => {
-    handlerGetUser({ page, limit: pageSize });
+    handlerGetVoucher({ page, limit: pageSize });
   };
 
   const onValuesChange = () => {
-    handlerGetUser({ page: 1 });
+    handlerGetVoucher({ page: 1 });
   };
 
   useEffect(() => {
-    handlerGetUser();
+    handlerGetVoucher();
   }, []);
 
   const onRemove = async (id) => {
     showLoading();
-    const res = await new categoriesApi().remove(id);
+    const res = await new voucherApi().remove(id);
 
-    if (res?.data?.success) {
-      notification.success({ message: 'Xóa loại sản phẩm thành công' });
-      handlerGetUser({ page: 1 });
+    if (res?.data?.result === 'SUCCESS') {
+      notification.success({ message: 'Xóa loại mã ưu đãi thành công' });
+      handlerGetVoucher({ page: 1 });
     }
     hideLoading();
   };
 
   const columns = [
     {
-      title: 'Tên loại sản phẩm ',
+      title: 'Tên mã ưu đãi',
       dataIndex: 'name',
       width: 150,
+    },
+    {
+      title: 'Loại mã ưu đãi',
+      dataIndex: 'category_id',
+      width: 150,
+      render: (item) => <>{item?.name}</>,
+    },
+    {
+      title: 'Giới thiệu mã ưu đãi',
+      dataIndex: 'description',
+      width: 150,
+    },
+    {
+      title: 'Ảnh mã ưu đãi',
+      dataIndex: 'coverImage',
+      width: 150,
+    },
+    {
+      title: 'Xuất xứ',
+      dataIndex: 'origin',
+      width: 150,
+    },
+    {
+      title: 'Trạng thái mã ưu đãi',
+      dataIndex: 'status',
+      width: 150,
+      render: (item) => <>{<StatusItemProduct status={item} />}</>,
     },
     {
       title: 'Ngày tạo',
@@ -85,10 +111,7 @@ const ListCategory = () => {
       width: 100,
       render: (_, item) => (
         <Row className={styles.action}>
-          <ActionTable
-            onRemove={() => onRemove(item?._id)}
-            onEdit={() => navigate(`${paths.categories}/${item._id}`)}
-          />
+          <ActionTable onRemove={() => onRemove(item?._id)} onEdit={() => navigate(`${paths.vouchers}/${item._id}`)} />
         </Row>
       ),
     },
@@ -97,10 +120,10 @@ const ListCategory = () => {
     <>
       <Form className={styles.form} form={form} onValuesChange={debounce(onValuesChange, 300)} name='form-search-user'>
         <Row className={styles.listUser}>
-          <HeaderSearch title='Danh sách loại sản phẩm' form={form} />
+          <HeaderSearch title='Danh sách mã ưu đãi' form={form} modalRef={modalRef} />
           <Row className={styles.formAction}>
-            <Button type='primary' htmlType='button' onClick={() => navigate(paths.createCategory)}>
-              Tạo mới loại sản phẩm
+            <Button type='primary' htmlType='button' onClick={() => navigate(paths.createVouchers)}>
+              Tạo mới mã ưu đãi
               <PlusCircleOutlined />
             </Button>
           </Row>
@@ -116,4 +139,20 @@ const ListCategory = () => {
   );
 };
 
-export default ListCategory;
+export default ListVoucher;
+
+const StatusItemProduct = ({ status }) => {
+  const checkStatus = () => {
+    switch (status) {
+      case '1':
+        return 'Còn hàng';
+      default:
+        return 'Hết hàng';
+    }
+  };
+  return (
+    <div>
+      <Typography>{checkStatus()}</Typography>
+    </div>
+  );
+};

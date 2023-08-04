@@ -1,0 +1,22 @@
+.files {
+  :global {
+    .ant-upload-list {
+      display: grid;
+      grid-gap: 20px;
+      margin: 24px auto;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      grid-auto-flow: dense;
+      .ant-image-img {
+        height: 100%;
+      }
+      .ant-upload-list-item-container {
+        height: 128px;
+      }
+      &::before,
+      &::after {
+        display: none;
+      }
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+}

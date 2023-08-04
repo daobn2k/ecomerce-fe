@@ -1,15 +1,11 @@
 import { Button, Form, notification, Row, Typography } from 'antd';
-import DatePickerCustomize from 'components/DatePicker';
 import InputText from 'components/InputText';
+import InputTextarea from 'components/InputTextArea';
 import { hideLoading, showLoading } from 'components/Loading';
-import SelectSearchInput from 'components/SelectSearchInput';
 import { paths } from 'constants/paths.constants';
-import { listGender, optionsRole } from 'constants/value.constants';
-import moment from 'moment';
-import { forwardRef, useEffect, useState } from 'react';
+import { forwardRef, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import categoriesApi from 'services/subs/categories';
-import userApi from 'services/subs/user';
 import styles from './index.module.scss';
 
 const DetailCateogry = forwardRef(() => {
@@ -21,12 +17,21 @@ const DetailCateogry = forwardRef(() => {
   const onFinish = async (values) => {
     showLoading();
     delete values.point;
-    const res = await new categoriesApi().edit({
-      id,
-      params: values,
-    });
+    let res;
+    if (id) {
+      res = await new categoriesApi().edit({
+        id,
+        params: values,
+      });
+    } else {
+      res = await new categoriesApi().add(values);
+    }
+
     if (res?.data?.result === 'SUCCESS') {
-      notification.success({ message: res?.data?.message ?? 'Chỉnh sửa loại sản phẩm thành công' });
+      notification.success({ message: res?.data?.message });
+      if (!id) {
+        onReset();
+      }
     }
     hideLoading();
   };
@@ -35,9 +40,7 @@ const DetailCateogry = forwardRef(() => {
 
     if (res?.data?.result === 'SUCCESS') {
       const caterory = res?.data?.data;
-      form.setFieldsValue({
-        ...caterory,
-      });
+      form.setFieldsValue(caterory);
     }
   };
 
@@ -56,15 +59,20 @@ const DetailCateogry = forwardRef(() => {
     <Row className={styles.editUser}>
       <HeaderForm title='Chi tiết loại sản phẩm' />
       <Form className={styles.form} form={form} onFinish={onFinish} name='DetailCateogry'>
-        <Row className={styles.itemForm}>
-          <Form.Item
-            className={styles.rowSearch}
-            name='name'
-            rules={[{ required: true, message: 'Vui lòng nhập tên loại sản phẩm' }]}
-          >
-            <InputText label='Tên loại sản phẩm' require placeholder='Nhập tên loại sản phẩm' disabled={true} />
-          </Form.Item>
-        </Row>
+        <Form.Item
+          className={styles.rowSearch}
+          name='name'
+          rules={[{ required: true, message: 'Vui lòng nhập tên loại sản phẩm' }]}
+        >
+          <InputText label='Tên loại sản phẩm' require placeholder='Nhập tên loại sản phẩm' />
+        </Form.Item>
+        <Form.Item
+          className={styles.rowSearch}
+          name='description'
+          rules={[{ required: true, message: 'Vui lòng nhập thông tin loại sản phẩm' }]}
+        >
+          <InputTextarea label='Thông tin loại sản phẩm' require placeholder='Nhập thông tin loại sản phẩm' />
+        </Form.Item>
         <Form.Item className={styles.rowSearch} name='password'>
           <Button className={styles.button} htmlType='submit'>
             Lưu

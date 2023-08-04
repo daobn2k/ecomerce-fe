@@ -19,7 +19,7 @@ export default UnAuthorizedPage;
 export const ButtonBackHome = () => {
   const navigate = useNavigate();
   const onClick = () => {
-    navigate(paths.home);
+    navigate(paths.products);
   };
   return (
     <Button type='primary' onClick={onClick}>

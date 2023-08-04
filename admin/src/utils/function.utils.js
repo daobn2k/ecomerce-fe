@@ -140,16 +140,16 @@ export const uploadFile = async (data) => {
 };
 
 export const getUrlFile = async (fileList = []) => {
-  const uploadPromise = fileList?.map((file) => {
-    const formUpload = new FormData();
-    formUpload.append('file', file?.originFileObj);
-
-    return uploadFile(formUpload);
+  const formUpload = new FormData();
+  fileList.map((file) => {
+    formUpload.append('files', file.originFileObj);
   });
 
-  const res = await Promise.all(uploadPromise);
-
-  return res?.length > 0 ? res?.map((i) => i?.path) : [];
+  const res = await new uploadApi().uploadFileMultiple(formUpload);
+  console.log(res, 'res');
+  if (res.data.data && res.status) {
+    return res.data.data;
+  }
 };
 
 export const formatPathToUrl = (path) => {
@@ -163,7 +163,7 @@ export const formatPathToListFile = (paths, type) => {
         uid: i + index + type,
         status: 'done',
         name: i,
-        url: formatPathToUrl(i),
+        url: i,
       };
     });
   }
@@ -172,9 +172,11 @@ export const formatPathToListFile = (paths, type) => {
 
 export const checkRoleUser = (role) => {
   switch (role) {
-    case 0:
+    case 'SUPER_ADMIN':
+      return 'Quản trị hệ thống';
+    case 'ADMIN':
       return 'Quản trị viên';
-    case 1:
+    case 'USER':
       return 'Người dùng';
     default:
       return '';
@@ -245,4 +247,12 @@ export const checkColorByName = (letter) => {
 
 export const formatContentTextArea = (content) => {
   return content ? content?.replace(/(?:\r\n|\r|\n)/g, '<br>') : '';
+};
+
+export const convertDataSelect = (obj) => {
+  return {
+    id: obj._id,
+    value: obj._id,
+    label: obj.name,
+  };
 };

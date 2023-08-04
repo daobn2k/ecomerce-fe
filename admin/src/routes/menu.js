@@ -1,21 +1,42 @@
 import { paths } from 'constants/paths.constants';
 import ListCategory from 'pages/ListCategory';
+import ListProducts from 'pages/ListProducts';
 import ListUser from 'pages/ListUser';
-import SettingInfo from 'pages/SettingInfo';
+import ListVoucher from 'pages/ListVoucher';
 
 const menu = [
   {
-    label: 'Danh sách người dùng',
+    label: 'Sản phẩm',
+    path: paths.products,
+    key: paths.products,
+    element: <ListProducts />,
+  },
+
+  {
+    label: 'Loại sản phẩm',
+    path: paths.categories,
+    key: paths.categories,
+    element: <ListCategory />,
+  },
+  {
+    label: 'Người dùng',
     path: paths.user,
     key: paths.user,
     element: <ListUser />,
   },
   {
-    label: 'Danh sách loại sản phẩm',
-    path: paths.categories,
-    key: paths.categories,
-    element: <ListCategory />,
+    label: 'Đơn hàng',
+    path: paths.orders,
+    key: paths.orders,
+    element: <ListUser />,
   },
+  {
+    label: 'Voucher',
+    path: paths.vouchers,
+    key: paths.vouchers,
+    element: <ListVoucher />,
+  },
+
   // {
   //   label: 'Cài đặt',
   //   path: paths.settingInfo,

@@ -7,7 +7,7 @@ const FormSearch = ({ form }) => {
   return (
     <Row className={styles.formSearch}>
       <Row className={styles.listFilterSearch}>
-        <Form.Item className={styles.rowSearch} name='search'>
+        <Form.Item className={styles.rowSearch} name='keyword'>
           <InputText label='Nhập nội dung tìm kiếm' placeholder='Nhập nội dung tìm kiếm' />
         </Form.Item>
       </Row>

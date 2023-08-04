@@ -78,10 +78,6 @@ const ListUser = () => {
       onHide();
     }
   };
-  const onActionChangePoint = (item) => {
-    setDataEdit(item);
-    modalRef.current.showModal();
-  };
   const onHide = () => {
     modalRef.current.handleCancel();
   };

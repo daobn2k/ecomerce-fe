@@ -40,7 +40,7 @@ const CustomizeHeader = () => {
         <Row className={styles.userInfo}>
           {/* <BellNotifications /> */}
           <Row className={styles.info}>
-            <Typography className={styles.name}>{user.username}</Typography>
+            <Typography className={styles.name}>{user.name}</Typography>
             <Typography className={styles.role}>{checkRoleUser(user.role)}</Typography>
           </Row>
           <Row className={styles.infoImage}>

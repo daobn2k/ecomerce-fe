@@ -20,10 +20,10 @@ const CustomizeSideBar = () => {
 
   useEffect(() => {
     if (location?.pathname) {
-      setCurrent(location?.pathname);
+      setCurrent(`/${location?.pathname.split('/')[1]}`);
     }
   }, [location]);
-  const onClickLogo = () => navigate(paths.posts);
+  const onClickLogo = () => navigate(paths.user);
   return (
     <Sider className={clsx(styles.sideBar)}>
       <Row className={styles.logo}>
