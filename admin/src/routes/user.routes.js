@@ -4,6 +4,12 @@ import Notifications from 'pages/Notifications';
 
 export const user = [
   {
+    label: 'Tạo mới người dùng',
+    path: `${paths.createUser}`,
+    key: `${paths.createUser}`,
+    element: <DetailUser />,
+  },
+  {
     label: 'Chi tiết người dùng',
     path: `${paths.user}/:id`,
     key: `${paths.user}/:id`,

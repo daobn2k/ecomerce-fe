@@ -39,6 +39,10 @@ class userApi {
     const url = urls.changePoint;
     return Api.request({ method: methods.post, url, params });
   }
+  addUser(params) {
+    const url = urls.getUser;
+    return Api.request({ method: methods.post, url, params });
+  }
 }
 
 export default userApi;

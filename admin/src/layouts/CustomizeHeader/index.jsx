@@ -21,8 +21,8 @@ const CustomizeHeader = () => {
 
   const onLogout = async () => {
     showLoading();
-    const res = await new authApi().logout();
-    if (res?.data?.success) {
+    const res = await new authApi().logout({ id: user._id });
+    if (res?.data?.result === 'SUCCESS') {
       clearStorage();
       navigate(paths.login);
     }

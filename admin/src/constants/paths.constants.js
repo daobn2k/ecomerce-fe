@@ -17,4 +17,5 @@ export const paths = {
   orders: '/orders',
   createProduct: '/products/create',
   createCategory: '/categories/create',
+  createUser: '/users/create',
 };

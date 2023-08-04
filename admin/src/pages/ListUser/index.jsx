@@ -1,3 +1,4 @@
+import { PlusCircleOutlined } from '@ant-design/icons';
 import { Button, Form, notification, Row, Tag } from 'antd';
 import clsx from 'clsx';
 import { ActionTable } from 'components/ActionTable';
@@ -89,7 +90,12 @@ const ListUser = () => {
       width: 150,
     },
     {
-      title: 'Tên',
+      title: 'Họ và tên',
+      dataIndex: 'name',
+      width: 150,
+    },
+    {
+      title: 'Tên đăng nhập',
       dataIndex: 'username',
       width: 150,
     },
@@ -107,7 +113,11 @@ const ListUser = () => {
       title: 'Trạng thái',
       dataIndex: 'status',
       width: 100,
-      render: (value) => (value ? <Tag color='#87d068'>Đang hoạt động</Tag> : <Tag color='#f50'>Không hoạt động</Tag>),
+      render: (value) => {
+        console.log(value);
+
+        return value ? <Tag color='#87d068'>Đang hoạt động</Tag> : <Tag color='#f50'>Không hoạt động</Tag>;
+      },
     },
     {
       title: 'Hành động',
@@ -126,6 +136,12 @@ const ListUser = () => {
       <Form className={styles.form} form={form} onValuesChange={debounce(onValuesChange, 300)} name='form-search-user'>
         <Row className={styles.listUser}>
           <HeaderSearch title='Danh sách loại sản phẩm' form={form} />
+          <Row className={styles.formAction}>
+            <Button type='primary' htmlType='button' onClick={() => navigate(paths.createUser)}>
+              Tạo mới người dùng
+              <PlusCircleOutlined />
+            </Button>
+          </Row>
           <TableCustomize
             columns={columns}
             data={data}
@@ -134,51 +150,8 @@ const ListUser = () => {
           />
         </Row>
       </Form>
-      <ModalCustomize
-        title='Thay đổi điểm'
-        content={
-          <ContentModalEditPoint onHide={onHide} onChangePoint={onChangePoint} ref={formPointRef} data={dataEdit} />
-        }
-        ref={modalRef}
-        isDelete
-        isHiddenFooter
-      />
     </>
   );
 };
 
 export default ListUser;
-
-const ContentModalEditPoint = forwardRef(({ onHide, onChangePoint, data }, ref) => {
-  const [form] = Form.useForm();
-
-  useEffect(() => {
-    if (data) {
-      form.setFieldValue('newPoint', data?.point);
-    }
-  }, [data]);
-  const onFinish = (values) => {
-    onChangePoint && onChangePoint(values, data);
-  };
-  return (
-    <Form className={styles.form} form={form} onFinish={onFinish} name={`form-gift-${data?._id}`}>
-      <Form.Item
-        className={styles.rowSearch}
-        name='newPoint'
-        rules={[{ required: true, message: 'Vui lòng nhập điểm' }]}
-      >
-        <InputText label='Điểm' placeholder='Nhập điểm' require />
-      </Form.Item>
-      <Form.Item className={clsx(styles.rowSearch)} name='btn'>
-        <Row className={styles.rowBtn}>
-          <Button className={styles.button} htmlType='submit' type='primary'>
-            Lưu
-          </Button>
-          <Button className={styles.button} htmlType='button' onClick={onHide}>
-            Hủy
-          </Button>
-        </Row>
-      </Form.Item>
-    </Form>
-  );
-});

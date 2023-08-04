@@ -134,8 +134,8 @@ export const postStatus = {
 };
 
 export const optionsRole = [
-  { id: 'ADMIN', value: 'Quản trị viên', label: 'Quản trị viên' },
-  { id: 'USER', value: 'Người dùng', label: 'Người dùng' },
+  { id: 'ADMIN', value: 'ADMIN', label: 'Quản trị viên' },
+  { id: 'USER', value: 'USER', label: 'Người dùng' },
 ];
 
 export const statusPosts = [

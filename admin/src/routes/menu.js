@@ -6,32 +6,32 @@ import ListVoucher from 'pages/ListVoucher';
 
 const menu = [
   {
-    label: 'Sản phẩm',
+    label: 'Quản lý sản phẩm',
     path: paths.products,
     key: paths.products,
     element: <ListProducts />,
   },
 
   {
-    label: 'Loại sản phẩm',
+    label: 'Quản lý loại sản phẩm',
     path: paths.categories,
     key: paths.categories,
     element: <ListCategory />,
   },
   {
-    label: 'Người dùng',
+    label: 'Quản lý người dùng',
     path: paths.user,
     key: paths.user,
     element: <ListUser />,
   },
   {
-    label: 'Đơn hàng',
+    label: 'Quản lý đơn hàng',
     path: paths.orders,
     key: paths.orders,
     element: <ListUser />,
   },
   {
-    label: 'Voucher',
+    label: 'Quản lý voucher',
     path: paths.vouchers,
     key: paths.vouchers,
     element: <ListVoucher />,

@@ -28,7 +28,7 @@ export const Login = () => {
       setUserProfile(res?.data?.data);
       notification.success({ message: 'Đăng nhập thành công' });
       form.resetFields();
-      navigate(paths.posts);
+      navigate(paths.products);
     }
 
     hideLoading();
