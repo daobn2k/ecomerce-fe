@@ -6,6 +6,7 @@ import UnAuthorizedPage from 'pages/UnAuthorizedPage';
 import { createBrowserRouter } from 'react-router-dom';
 import { categories } from './categories.routes';
 import menu from './menu';
+import { orders } from './orders.routes';
 import { products } from './product.routes';
 import { user } from './user.routes';
 import { vouchers } from './voucher.routes';
@@ -14,7 +15,7 @@ const router = createBrowserRouter([
   {
     path: paths.home,
     element: <MainAuthLayout />,
-    children: [...menu, ...user, ...products, ...categories, ...vouchers],
+    children: [...menu, ...user, ...products, ...categories, ...vouchers, ...orders],
   },
   {
     path: paths.unauthorized,

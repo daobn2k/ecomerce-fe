@@ -1,5 +1,6 @@
 import { paths } from 'constants/paths.constants';
 import ListCategory from 'pages/ListCategory';
+import ListOrder from 'pages/ListOrder';
 import ListProducts from 'pages/ListProducts';
 import ListUser from 'pages/ListUser';
 import ListVoucher from 'pages/ListVoucher';
@@ -28,7 +29,7 @@ const menu = [
     label: 'Quản lý đơn hàng',
     path: paths.orders,
     key: paths.orders,
-    element: <ListUser />,
+    element: <ListOrder />,
   },
   {
     label: 'Quản lý voucher',

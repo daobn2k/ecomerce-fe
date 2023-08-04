@@ -1,0 +1,50 @@
+@use '../../scss/' as *;
+
+.form {
+  overflow-x: hidden;
+}
+.listUser {
+}
+
+.action {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.formAction {
+  width: 100%;
+  margin-bottom: 12px;
+}
+.form {
+  flex: 1;
+  margin: 8px 0;
+  @include mobile {
+    margin-top: 24px;
+  }
+
+  .rowSearch {
+    min-width: 200px;
+  }
+  .rowBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .button {
+      height: 38px;
+      width: 124px;
+      font-size: 16px;
+      margin-top: 12px;
+      &:hover {
+        color: $white;
+      }
+      margin-right: 16px;
+    }
+  }
+
+  :global {
+    .ant-form-item {
+      margin-bottom: 12px;
+    }
+  }
+}

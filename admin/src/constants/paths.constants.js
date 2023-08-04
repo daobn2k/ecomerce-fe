@@ -15,6 +15,7 @@ export const paths = {
   vouchers: '/vouchers',
   createVouchers: '/vouchers/create',
   orders: '/orders',
+  createOrders: '/orders/create',
   createProduct: '/products/create',
   createCategory: '/categories/create',
   createUser: '/users/create',
