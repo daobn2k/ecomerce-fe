@@ -24,7 +24,8 @@ const DetailVoucher = forwardRef(() => {
     let res;
     const params = {
       ...values,
-      create_uid: userProfile.id,
+      create_uid: userProfile._id,
+      recive_uid: values?.recive_uid?.id,
     };
     if (id) {
       res = await new voucherApi().edit({
