@@ -1,0 +1,61 @@
+.footerContainer {
+  padding: 8px 24px;
+  display: flex;
+  flex-direction: column;
+  .rowTitleFooter {
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 1px;
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+    .titleFooter {
+      font-size: 28px;
+      line-height: 37px;
+      text-transform: uppercase;
+      font-weight: 300;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      background-color: #fff;
+      padding: 0 24px;
+    }
+  }
+  .titleListItem {
+    font-size: 14px;
+    line-height: 22px;
+    color: #111111;
+    margin-bottom: 10px;
+    font-weight: 600;
+    margin-bottom: 24px;
+  }
+  .listItemFooter {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    .itemFooter {
+      display: flex;
+      gap: 8px;
+
+      .itemIcon {
+        font-size: 14px;
+      }
+      .itemLabel {
+        font-size: 12px;
+        line-height: 21px;
+        color: #555555;
+        display: inline-block;
+      }
+    }
+  }
+}
